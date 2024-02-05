@@ -8,6 +8,7 @@ from models import storage
 
 @app_views.route('/status')
 def display_status():
+    """ displays status """
     return jsonify(
             {
                 "status": "ok"
@@ -17,6 +18,8 @@ def display_status():
 
 @app_views.route('/stats')
 def get_count():
+    """ displays total number of objects in
+    a class or total of all classes """
     classes = {
         "Amenity": "amenities",
         "City": "cities",
@@ -33,6 +36,7 @@ def get_count():
 
 @app_views.errorhandler(404)
 def not_found(error):
+    """ handles 404 """
     response = jsonify({"error": "Not found"})
     response.status_code = 404
     abort(response)
